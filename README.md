@@ -28,16 +28,37 @@ npm -v
 
 For this project, we also need an API key to communicate with the OpenAI API. An API key is a unique identifier used to authenticate requests made to an API (Application Programming Interface). We will provide the API key in your application or scripts when making requests to OpenAI's API.
 
-Sign up for an account at [OpenAI](https://platform.openai.com/signup). Navigate to the API Keys section in your OpenAI dashboard and click Create New Secret Key to generate a new API key. Copy the API key and save it securely. (You won't be able to see it again once you close the window.)
+Sign up for an account at [OpenAI](https://platform.openai.com/signup). Navigate to the API Keys section in your OpenAI dashboard and click Create New Secret Key to generate a new API key.
 
-### Setting Up the React Frontend
+![OpenAI Dashboard](openai_dashboard.png)
+
+Copy the API key and save it securely. (You won't be able to see it again once you close the window.)
+
+### Creating a New Project
+
+Our project will be organized into two folders.  
+
+```plaintext
+pdf-question-helper/
+├── frontend/       # React Frontend
+└── backend/       # Express Backend
+```
+
+The frontend contains the user-facing interface, built with React. It handles:
+- UI/UX design and layout.
+- User interaction and event handling.
+- Fetching and displaying data from the backend.
+
+The backend contains the server-side code, built with Express. It handles our APIs to process requests from the frontend.
 
 `create-react-app` is a popular tool to bootstrap React applications. It sets up a new React project with all the essential configurations and tools pre-installed, so you can start coding immediately without hassle.
 
 
+
+
 1. **Create a React app**:
    ```bash
-   npx create-react-app client
+   npx create-react-app frontend
    ```
 2. Navigate to the project folder:
    ```bash
