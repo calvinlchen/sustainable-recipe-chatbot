@@ -14,7 +14,7 @@ Welcome to **PDF Question Helper**, a simple app that allows users to upload a P
 ---
 ## 🚀 Project Guide
 
-### Setup
+### 1. Setup
 
 This guide assumes you have basic familiarity with React and Javascript. If you need a refresher, check out the [React Quick Start](https://react.dev/learn). Before we get started with coding, we need to install a few dependencies. 
 
@@ -34,7 +34,7 @@ Sign up for an account at [OpenAI](https://platform.openai.com/signup). Navigate
 
 Copy the API key and save it securely. (You won't be able to see it again once you close the window.)
 
-### Primer: What is an API?
+### 2. Primer: What is an API?
 
 An API (Application Programming Interface) is a set of rules and tools that allow different software applications to communicate with each other. Think of it as a bridge that enables one application to request and receive data or functionality from another.
 
@@ -85,7 +85,7 @@ When interacting with an endpoint, a request typically includes:
 
 In this project, we’ll use a REST API to send questions and context to the OpenAI API via HTTP POST requests. The API will analyze the PDF text and return a JSON response with the answers. Understanding these basics will help as we integrate the OpenAI API with our backend. Let’s move on to setting up the project!
 
-### Creating a New Project
+### 3. Creating a New Project
 
 Our project will be organized into two folders.  
 
@@ -105,7 +105,7 @@ The backend contains the server-side code, built with Express. It handles our AP
 #### Frontend
 `create-react-app` is a popular tool to bootstrap React applications. It sets up a new React project with all the essential configurations and tools pre-installed, so you can start coding immediately without hassle.
 
-1. **Create a React app**:
+1. Create a React app
    ```bash
    npx create-react-app frontend
    ```
@@ -117,40 +117,8 @@ The backend contains the server-side code, built with Express. It handles our AP
    ```bash
    npm install axios
    ```
-4. Replace your `App.js` file with the following snippet for file upload and question-asking functionality:
 
-   ```javascript
-   const handleFileUpload = async (event) => {
-       const file = event.target.files[0];
-       const formData = new FormData();
-       formData.append('file', file);
-
-       try {
-           const response = await axios.post('http://localhost:5001/upload', formData, {
-               headers: {
-                   'Content-Type': 'multipart/form-data'
-               }
-           });
-           setPdfText(response.data.text);
-       } catch (error) {
-           console.error('Error uploading file:', error);
-       }
-   };
-
-   const handleAskQuestion = async () => {
-       try {
-           const response = await axios.post('http://localhost:5001/ask', {
-               question,
-               pdfText
-           });
-           setAnswer(response.data.answer);
-       } catch (error) {
-           console.error('Error asking question:', error);
-       }
-   };
-   ```
-
-5. Start the frontend:
+4. Start the frontend:
    ```bash
    npm start
    ```
@@ -171,52 +139,25 @@ The backend contains the server-side code, built with Express. It handles our AP
    ```bash
    npm install express multer pdf-parse openai
    ```
-4. Create a file `index.js` and add the following code for handling PDF uploads and ChatGPT integration:
+4. Create a file `index.js` and add the following code. 
 
    ```javascript
+   // IMPORT LIBRARIES
    const express = require('express');
-   const multer = require('multer');
-   const pdfParse = require('pdf-parse');
-   const { OpenAI } = require('openai');
+   const multer = require('multer'); // Multer is used to handle file uploads in Node.js.
+   const pdfParse = require('pdf-parse'); // pdf-parse is a library to extract text from PDF files.
+   const { OpenAI } = require('openai'); 
 
+   // INITIALIZATION 
    const app = express();
    const upload = multer();
    const openai = new OpenAI('YOUR_OPENAI_API_KEY');
 
    app.use(express.json());
 
-   app.post('/upload', upload.single('file'), async (req, res) => {
-       try {
-           const data = await pdfParse(req.file.buffer);
-           res.json({ text: data.text });
-       } catch (error) {
-           res.status(500).json({ error: 'Failed to parse PDF' });
-       }
-   });
-
-   app.post('/ask', async (req, res) => {
-       const { question, pdfText } = req.body;
-       try {
-           const stream = await openai.chat.completions.create({
-               model: "gpt-4o-mini",
-               messages: [{ role: "user", content: `${pdfText}\n\nQ: ${question}\nA:` }],
-               store: true,
-               stream: true,
-           });
-
-           let answer = '';
-           for await (const chunk of stream) {
-               answer += chunk.choices[0]?.delta?.content || "";
-           }
-
-           res.json({ answer });
-       } catch (error) {
-           console.error('Error with OpenAI API:', error);
-           res.status(500).json({ error: 'Failed to get response from OpenAI' });
-       }
-   });
-
+   // START SERVER
    app.listen(5001, () => console.log('Server running on http://localhost:5001'));
+   // The server listens on port 5001 and logs a message when it's running.
    ```
 
 5. Start the backend:
