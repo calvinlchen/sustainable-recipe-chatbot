@@ -167,6 +167,70 @@ The backend contains the server-side code, built with Express. It handles our AP
 
 ---
 
+### 4. Creating a User Interface
+
+Now, we'll create a simple UI to upload the PDF, display extracted text, and allow users to ask questions.
+
+Open `frontend/App.js`. This is the file that runs the main React component of your application, serving as the entry point for building the user interface.
+
+1. Replace `App.js` with the following code. Here, we use `useState` to initialize three state variables: `pdfText` to store the extracted text from the uploaded PDF, `question` to hold the user's input for their question, and `answer` to store the response (or answer) to the question. 
+   ```javascript
+   import React, { useState } from 'react';
+   
+   function App() {
+       const [pdfText, setPdfText] = useState('');
+       const [question, setQuestion] = useState('');
+       const [answer, setAnswer] = useState('');
+   
+       return <div className="App"></div>;
+   }
+   
+   export default App;
+   ```
+   
+2. Add the ability for users to upload a PDF file. To handle the uploaded file, we define a function called `handleFileUpload`. When a file is uploaded, this function is triggered via the `onChange` event listener on the input field. The extracted text is stored in the `pdfText` state variable using the `setPdfText` function. For now, we will omit the API call for simplictiy.
+   ```javascript
+   function App() {
+    const [pdfText, setPdfText] = useState('');
+    const [question, setQuestion] = useState('');
+    const [answer, setAnswer] = useState('');
+
+    const handleFileUpload = async (event) => {
+        const file = event.target.files[0];
+        // API CALL OMITTED
+        setPdfText('This is the mock text extracted from the PDF.');
+    };
+
+    return (
+        <div className="App">
+            <h1>PDF Q&A</h1>
+            <input type="file" accept="application/pdf" onChange={handleFileUpload} />
+        </div>
+    );
+   }
+      
+   export default App;
+   ```
+
+3. Now that we can upload a file and store mock text in the pdfText state, the next step is to display this extracted text to the user.
+   ```javascript
+   return (
+    <div className="App">
+        <h1>PDF Q&A</h1>
+        <input type="file" accept="application/pdf" onChange={handleFileUpload} />
+        <div>
+            <h2>Extracted Text</h2>
+            <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+                {pdfText}
+            </pre>
+        </div>
+    </div>
+   );
+   ```
+
+### 5. Defining API Endpoints
+
+
 ## 💡 How It Works
 
 ### 1. Upload PDF
