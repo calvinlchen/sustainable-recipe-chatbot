@@ -12,30 +12,28 @@ Welcome to **PDF Question Helper**, a simple app that allows users to upload a P
 - Integration with `pdf-parse` and OpenAI API.
 
 ---
-
-## 🛠️ Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) installed on your machine.
-- Basic knowledge of JavaScript, React, and Express.js.
-- OpenAI API key (sign up at [OpenAI](https://platform.openai.com/signup)).
-
----
-
-## 📂 Project Structure
-
-```plaintext
-pdf-question-helper/
-├── client/       # React Frontend
-└── server/       # Express Backend
-```
-
----
-
 ## 🚀 How to Run the Project
 
-### 1. Setting Up the React Frontend
+### Setup
+
+Before we get started with coding, we need to install a few dependencies. 
+
+Node.js is a JavaScript runtime environment that allows developers to run JavaScript code on the server side or outside a web browser. It comes pre-packaged with npm, a package manager that allows developers to install open-source libraries and modules. You can install Node.js from [this website](https://nodejs.org/). 
+
+After installation, open your terminal or command prompt and run:
+```bash
+node -v
+npm -v
+```
+
+For this project, we also need an API key to communicate with the OpenAI API. An API key is a unique identifier used to authenticate requests made to an API (Application Programming Interface). We will provide the API key in your application or scripts when making requests to OpenAI's API.
+
+Sign up for an account at [OpenAI](https://platform.openai.com/signup). Navigate to the API Keys section in your OpenAI dashboard and click Create New Secret Key to generate a new API key. Copy the API key and save it securely. (You won't be able to see it again once you close the window.)
+
+### Setting Up the React Frontend
+
+`create-react-app` is a popular tool to bootstrap React applications. It sets up a new React project with all the essential configurations and tools pre-installed, so you can start coding immediately without hassle.
+
 
 1. **Create a React app**:
    ```bash
