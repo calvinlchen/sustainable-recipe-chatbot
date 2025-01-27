@@ -83,6 +83,8 @@ When interacting with an endpoint, a request typically includes:
 - Query parameters in the URL (e.g., ?search=pdf).
 - Body parameters in JSON format for sending complex data.
 
+In this project, we’ll use a REST API to send questions and context to the OpenAI API via HTTP POST requests. The API will analyze the PDF text and return a JSON response with the answers. Understanding these basics will help as we integrate the OpenAI API with our backend. Let’s move on to setting up the project!
+
 ### Creating a New Project
 
 Our project will be organized into two folders.  
