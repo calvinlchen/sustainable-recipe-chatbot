@@ -12,11 +12,11 @@ Welcome to **PDF Question Helper**, a simple app that allows users to upload a P
 - Integration with `pdf-parse` and OpenAI API.
 
 ---
-## 🚀 How to Run the Project
+## 🚀 Project Guide
 
 ### Setup
 
-Before we get started with coding, we need to install a few dependencies. 
+This guide assumes you have basic familiarity with React and Javascript. If you need a refresher, check out the [React Quick Start](https://react.dev/learn). Before we get started with coding, we need to install a few dependencies. 
 
 Node.js is a JavaScript runtime environment that allows developers to run JavaScript code on the server side or outside a web browser. It comes pre-packaged with npm, a package manager that allows developers to install open-source libraries and modules. You can install Node.js from [this website](https://nodejs.org/). 
 
@@ -33,6 +33,44 @@ Sign up for an account at [OpenAI](https://platform.openai.com/signup). Navigate
 ![OpenAI Dashboard](openai_dashboard.png)
 
 Copy the API key and save it securely. (You won't be able to see it again once you close the window.)
+
+### Primer: What is an API?
+
+An API (Application Programming Interface) is a set of rules and tools that allow different software applications to communicate with each other. Think of it as a bridge that enables one application to request and receive data or functionality from another.
+
+In simpler terms, APIs allow developers to access features or data from external services, without needing to know how those services work internally. For example:
+- Social media APIs let you embed posts or retrieve user data.
+- Weather APIs provide real-time weather updates.
+- OpenAI’s API allows developers to use AI capabilities, such as ChatGPT, in their own apps.
+
+When you use an API, you're essentially making a request to a server, and the server sends back a response. This is typically done over the internet using protocols like HTTP. Here’s the basic workflow:
+1. **Request**: Your application sends a request to the API endpoint (a URL). This request might include parameters, such as what data you need or actions you want to perform.
+2. **Authentication**: Many APIs require you to provide an API key to verify your identity.
+3. **Response**: The server processes your request and sends back a response, usually in JSON format (a lightweight data format that’s easy to read and work with). It also returns a status code, which indicates whether the request was successful (e.g., `200 OK`) or if there was an error (e.g., `404 Not Found`).
+
+#### Understanding REST APIs
+
+A REST API (Representational State Transfer) is a widely used style for building APIs. It relies on standard web technologies like HTTP, making it simple and accessible for developers to use. REST APIs are often used for client-server communication.
+
+With REST APIs, communication is organized around "resources." A resource is any object or piece of data that the API manages, such as a PDF document, a user profile, or a question. Each resource is identified by a URL, known as an endpoint.
+
+You interact with these resources by performing actions, which are represented by HTTP methods. For example:
+- If you want to retrieve information, you use the GET method.
+- To send data or create something new, you use the POST method.
+- Updating or modifying a resource typically uses PUT or PATCH.
+- Deleting a resource involves the DELETE method.
+
+REST APIs also often include parameters to customize the request. For instance, query parameters allow you to filter or sort results (e.g., `?search=pdf`), while data in the request body lets you send more complex information, like a question to analyze text.
+
+An endpoint is a specific URL that identifies a resource or action within the API. It is like the address where you send your request to interact with a resource. For example:
+- `https://api.example.com/documents` might represent all documents.
+- `https://api.example.com/documents/123` could represent a specific document with an ID of `123`.
+
+Endpoints often combine with HTTP methods to perform different actions:
+- GET `/documents` retrieves all documents.
+- POST `/documents` creates a new document.
+- GET `/documents/123` retrieves a specific document with ID 123.
+- DELETE `/documents/123` deletes the document with ID 123
 
 ### Creating a New Project
 
