@@ -38,7 +38,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>PDF Q&A</h1>
+            <h1>PDF Q&A App</h1>
             <input type="file" accept="application/pdf" onChange={handleFileUpload} />
             <div>
                 <h2>Extracted Text</h2>
