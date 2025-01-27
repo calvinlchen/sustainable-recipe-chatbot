@@ -160,7 +160,7 @@ The backend contains the server-side code, built with Express. It handles our AP
    // The server listens on port 5001 and logs a message when it's running.
    ```
 
-5. Start the backend:
+5. Start the backend in a separate terminal window (the frontend and backend should be running at the same time!):
    ```bash
    node index.js
    ```
