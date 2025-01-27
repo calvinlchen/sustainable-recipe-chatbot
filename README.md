@@ -48,6 +48,8 @@ When you use an API, you're essentially making a request to a server, and the se
 2. **Authentication**: Many APIs require you to provide an API key to verify your identity.
 3. **Response**: The server processes your request and sends back a response, usually in JSON format (a lightweight data format that’s easy to read and work with). It also returns a status code, which indicates whether the request was successful (e.g., `200 OK`) or if there was an error (e.g., `404 Not Found`).
 
+![What is a REST API](what_is_rest_api.png)
+
 #### Understanding REST APIs
 
 A REST API (Representational State Transfer) is a widely used style for building APIs. It relies on standard web technologies like HTTP, making it simple and accessible for developers to use. REST APIs are often used for client-server communication.
@@ -71,6 +73,15 @@ Endpoints often combine with HTTP methods to perform different actions:
 - POST `/documents` creates a new document.
 - GET `/documents/123` retrieves a specific document with ID 123.
 - DELETE `/documents/123` deletes the document with ID 123
+
+![REST API Request Anatomy](rest_anatomy.png)
+
+When interacting with an endpoint, a request typically includes:
+- The endpoint URL that specifies the resource (e.g., /documents).
+- An HTTP method that defines the action (e.g., GET to retrieve data).
+- Headers that provide metadata (e.g., an API key for authentication).
+- Query parameters in the URL (e.g., ?search=pdf).
+- Body parameters in JSON format for sending complex data.
 
 ### Creating a New Project
 
