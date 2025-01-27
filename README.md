@@ -102,10 +102,8 @@ The frontend contains the user-facing interface, built with React. It handles:
 
 The backend contains the server-side code, built with Express. It handles our APIs to process requests from the frontend.
 
+#### Frontend
 `create-react-app` is a popular tool to bootstrap React applications. It sets up a new React project with all the essential configurations and tools pre-installed, so you can start coding immediately without hassle.
-
-
-
 
 1. **Create a React app**:
    ```bash
@@ -113,7 +111,7 @@ The backend contains the server-side code, built with Express. It handles our AP
    ```
 2. Navigate to the project folder:
    ```bash
-   cd client
+   cd frontend
    ```
 3. Install Axios for making API requests:
    ```bash
@@ -159,11 +157,11 @@ The backend contains the server-side code, built with Express. It handles our AP
 
 ---
 
-### 2. Setting Up the Express Backend
+#### Backend
 
 1. Navigate back to the root directory and create the server folder:
    ```bash
-   mkdir server && cd server
+   mkdir backend && cd backend
    ```
 2. Initialize a Node.js project:
    ```bash
@@ -271,16 +269,5 @@ app.post('/ask', async (req, res) => {
     }
 });
 ```
-
----
-
-## 📝 Notes for Beginners
-
-1. **Creating a React App**: Use `npx create-react-app <app-name>` to quickly bootstrap a React project.
-2. **Backend and Frontend Communication**: Use Axios to send HTTP requests between React and Express.
-3. **API Integration**: Learn how to integrate third-party libraries like `pdf-parse` and APIs like OpenAI.
-4. **Error Handling**: Always include try-catch blocks to manage errors gracefully.
-
----
 
 Enjoy building your project! 😊
