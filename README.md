@@ -212,7 +212,7 @@ Open `frontend/App.js`. This is the file that runs the main React component of y
    export default App;
    ```
 
-3. Now that we can upload a file and store mock text in the pdfText state, the next step is to display this extracted text to the user.
+3. Now that we can upload a file and store mock text in the pdfText state, the next step is to display this extracted text to the user. We use the `{}` to tell the JSX parser that the content inside should be interpreted as JavaScript rather than a string. 
    ```javascript
    return (
     <div className="App">
@@ -226,6 +226,45 @@ Open `frontend/App.js`. This is the file that runs the main React component of y
         </div>
     </div>
    );
+   ```
+
+4. Next, we give the user the ability to ask a question about the displayed text. This is achieved by adding a text input field and binding it to the question state. Whenever the user types in this input field, the onChange event updates the question state using the setQuestion function. Again, we omit the API call for now. We also add a button to allow users to submit their question.
+   ```javascript
+   const handleAskQuestion = async () => {
+       // API CALL OMITTED
+       setAnswer('This is the mocked answer based on the question.');
+   };
+   
+   return (
+       <div className="App">
+           <h1>PDF Q&A</h1>
+           <input type="file" accept="application/pdf" onChange={handleFileUpload} />
+           <div>
+               <h2>Extracted Text</h2>
+               <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+                   {pdfText}
+               </pre>
+           </div>
+           <div>
+               <input
+                   type="text"
+                   value={question}
+                   onChange={(e) => setQuestion(e.target.value)}
+                   placeholder="Ask a question"
+               />
+               <button onClick={handleAskQuestion}>Ask</button>
+           </div>
+       </div>
+   );
+   ```
+
+5. Finally, we display the mocked answer below the question input by conditionally rendering the `answer` state if it is not empty.
+   ```javascript
+   {answer && (
+    <div>
+        <strong>Answer:</strong> {answer}
+    </div>
+   )}
    ```
 
 ### 5. Defining API Endpoints
