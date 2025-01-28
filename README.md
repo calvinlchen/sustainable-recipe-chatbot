@@ -436,5 +436,5 @@ If you missed anything, feel free to reference this repository, where a working 
 
 Good luck, and happy hacking! 🚀
 
-## 📋 Credit
+## 🌵 Credit
 The code and write-up for this starter project was created by the 2025 HackDuke Tech Team. This project was inspired by [TreeHacks' Hackpacks](https://github.com/TreeHacks). Check them out for more sample projects and guides!
