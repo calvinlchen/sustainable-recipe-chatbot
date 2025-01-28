@@ -410,7 +410,7 @@ Lastly, we need to call our backend API endpoints from the appropriate frontend 
    };
    ```
 3. Modify the `handleAskQuestion` function to make a `POST` request to the backend `/ask` endpoint. Make sure to pass in the `question` and `pdfText` variables as parameters into our `axios.post()` call.
-```
+```javascript
 const handleAskQuestion = async () => {
      try {
          const response = await axios.post('http://localhost:5001/ask', {
