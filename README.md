@@ -173,11 +173,12 @@ The backend contains the server-side code, built with Express. It handles our AP
 
 Now, we'll create a simple UI to upload the PDF, display extracted text, and allow users to ask questions.
 
-Open `frontend/App.js`. This is the file that runs the main React component of your application, serving as the entry point for building the user interface.
+Open `frontend/src/App.js`. This is the file that runs the main React component of your application, serving as the entry point for building the user interface.
 
 1. Replace `App.js` with the following code. Here, we use `useState` to initialize three state variables: `pdfText` to store the extracted text from the uploaded PDF, `question` to hold the user's input for their question, and `answer` to store the response (or answer) to the question. 
    ```javascript
    import React, { useState } from 'react';
+   import './App.css'
    
    function App() {
        const [pdfText, setPdfText] = useState('');
@@ -268,6 +269,67 @@ Open `frontend/App.js`. This is the file that runs the main React component of y
     </div>
    )}
    ```
+   
+6. To make everything look nice, include the following styles in `frontend/src/App.css`. CSS (Cascading Style Sheets) is used to define the look and feel of a web application, such as colors, layouts, fonts, spacing, and responsiveness. Don't worry about the details for now! You can read more about CSS [here](https://www.w3schools.com/css/).
+  ```css
+   body {
+     font-family: Arial, sans-serif;
+     background-color: #f4f4f9;
+     margin: 0;
+     padding: 20px;
+   }
+   
+   .App {
+     max-width: 600px;
+     margin: 0 auto;
+     background: white;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+   
+   h1 {
+     color: #333;
+     text-align: center;
+   }
+   
+   input[type="file"],
+   input[type="text"] {
+     width: 100%;
+     padding: 10px;
+     margin: 10px 0;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+   }
+   
+   button {
+     width: 100%;
+     padding: 10px;
+     background-color: #007bff;
+     color: white;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     margin-top: 10px;
+   }
+   
+   button:hover {
+     background-color: #0056b3;
+   }
+   
+   pre {
+     background-color: #f8f8f8;
+     padding: 10px;
+     border-radius: 4px;
+     overflow-x: auto;
+   }
+   
+   strong {
+     display: block;
+     margin-top: 20px;
+     color: #333;
+   }
+```
 
 ### 5. Defining API Endpoints
 The backend will consist of two main API endpoints:
@@ -322,3 +384,4 @@ app.post('/ask', async (req, res) => {
 
 ### 6. Putting It All Together
 
+Lastly, we need to call our backend API endpoints from the appropriate frontend handler functions. 
