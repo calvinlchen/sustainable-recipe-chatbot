@@ -146,13 +146,15 @@ The backend contains the server-side code, built with Express. It handles our AP
    const express = require('express');
    const multer = require('multer'); // Multer is used to handle file uploads in Node.js.
    const pdfParse = require('pdf-parse'); // pdf-parse is a library to extract text from PDF files.
-   const { OpenAI } = require('openai'); 
+   const { OpenAI } = require('openai');
+   const cors = require('cors');
 
    // INITIALIZATION 
    const app = express();
    const upload = multer();
    const openai = new OpenAI('YOUR_OPENAI_API_KEY');
 
+   app.use(cors()); // Enables cross-origin resource sharing, allowing the frontend (running on a different port) to send requests to the backend
    app.use(express.json());
 
    // START SERVER
