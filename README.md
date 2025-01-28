@@ -384,4 +384,52 @@ Navigate to `backend/server.js`.
 
 ### 6. Putting It All Together
 
-Lastly, we need to call our backend API endpoints from the appropriate frontend handler functions. 
+Lastly, we need to call our backend API endpoints from the appropriate frontend handler functions. To do this, we'll use Axios, a popular JavaScript library used to make HTTP requests from a web application to a server. Returning to  `frontend/src/App.js`:
+
+1. Add `import axios from 'axios';` to the top of the file. This imports the Axios library into our app. 
+2. Edit the `handleFileUpload` function to include the following Axios `POST` request to the `upload` endpoint.
+   ```javascript
+   const handleFileUpload = async (event) => {
+    const file = event.target.files[0]; // Get the selected file from the file input element
+
+    const formData = new FormData(); // Create a new FormData instance to prepare the file for upload
+    formData.append('file', file); // Append the file to the FormData object with the key 'file'
+
+    try {
+        // Make a POST request to the backend API to upload the file
+        const response = await axios.post('http://localhost:5001/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data' // Set the content type to handle file uploads
+            }
+        });
+
+        setPdfText(response.data.text); // Update the state with the returned text
+    } catch (error) {
+        console.error('Error uploading file:', error);
+    }
+   };
+   ```
+3. Modify the `handleAskQuestion` function to make a `POST` request to the backend `/ask` endpoint. Make sure to pass in the `question` and `pdfText` variables as parameters into our `axios.post()` call.
+```
+const handleAskQuestion = async () => {
+     try {
+         const response = await axios.post('http://localhost:5001/ask', {
+             question,
+             pdfText
+         });
+         setAnswer(response.data.answer);
+     } catch (error) {
+         console.error('Error asking question:', error);
+     }
+};
+```
+
+### 7. Conclusion
+Congratulations! You've just completed building the PDF Question Helper app, integrating a React frontend, an Express backend, and OpenAI's API. This project has taken you through essential concepts and tools, including:
+- Setting up and structuring a full-stack application.
+- Using `pdf-parse` to extract text from PDF files.
+- Making HTTP requests from a React frontend to an Express backend using Axios.
+- Leveraging OpenAI’s API to process and respond to user questions.
+- Understanding and working with REST APIs and JSON data.
+
+Good luck, and happy hacking! 🚀
