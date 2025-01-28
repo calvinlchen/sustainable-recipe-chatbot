@@ -432,6 +432,6 @@ Congratulations! You've just completed building the PDF Question Helper app, int
 - Leveraging OpenAI’s API to process and respond to user questions.
 - Understanding and working with REST APIs and JSON data.
 
-If you missed anything, feel free to reference this reppository, where a working version of the project is implemented.
+If you missed anything, feel free to reference this repository, where a working version of the project is implemented.
 
 Good luck, and happy hacking! 🚀
