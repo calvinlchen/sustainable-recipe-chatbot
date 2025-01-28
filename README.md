@@ -30,7 +30,7 @@ For this project, we also need an API key to communicate with the OpenAI API. An
 
 Sign up for an account at [OpenAI](https://platform.openai.com/signup). Navigate to the API Keys section in your OpenAI dashboard and click Create New Secret Key to generate a new API key.
 
-![OpenAI Dashboard](openai_dashboard.png)
+![OpenAI Dashboard](assets/openai_dashboard.png)
 
 Copy the API key and save it securely. (You won't be able to see it again once you close the window.)
 
@@ -48,7 +48,7 @@ When you use an API, you're essentially making a request to a server, and the se
 2. **Authentication**: Many APIs require you to provide an API key to verify your identity.
 3. **Response**: The server processes your request and sends back a response, usually in JSON format (a lightweight data format that’s easy to read and work with). It also returns a status code, which indicates whether the request was successful (e.g., `200 OK`) or if there was an error (e.g., `404 Not Found`).
 
-![What is a REST API](what_is_rest_api.png)
+![What is a REST API](assets/what_is_rest_api.png)
 
 #### Understanding REST APIs
 
@@ -74,7 +74,7 @@ Endpoints often combine with HTTP methods to perform different actions:
 - GET `/documents/123` retrieves a specific document with ID 123.
 - DELETE `/documents/123` deletes the document with ID 123
 
-![REST API Request Anatomy](rest_anatomy.png)
+![REST API Request Anatomy](assets/rest_anatomy.png)
 
 When interacting with an endpoint, a request typically includes:
 - The endpoint URL that specifies the resource (e.g., /documents).
@@ -330,6 +330,7 @@ Open `frontend/src/App.js`. This is the file that runs the main React component 
         color: #333;
       }
    ```
+   ![Frontend UI](assets/frontend_ui.png)
 
 ### 5. Defining API Endpoints
 The backend will consist of two main API endpoints:
