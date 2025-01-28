@@ -358,29 +358,29 @@ Navigate to `backend/server.js`.
 
    The stream mode is enabled in the API call, which means the response is returned in small chunks as it is generated. This is particularly useful for handling longer or more complex answers without waiting for the entire response to be generated. Within the `for await` loop, each incoming chunk is processed, and its content (if present) is appended to the `answer` variable. Finally, the assembled answer is sent back to the client as a JSON object with the `answer` field.
 
-```javascript
-app.post('/ask', async (req, res) => {
-    const { question, pdfText } = req.body;
-    try {
-        const stream = await openai.chat.completions.create({
-            model: "gpt-4o-mini",
-            messages: [{ role: "user", content: `${pdfText}\n\nQ: ${question}\nA:` }],
-            store: true,
-            stream: true,
-        });
-
-        let answer = '';
-        for await (const chunk of stream) {
-            answer += chunk.choices[0]?.delta?.content || "";
-        }
-
-        res.json({ answer });
-    } catch (error) {
-        console.error('Error with OpenAI API:', error);
-        res.status(500).json({ error: 'Failed to get response from OpenAI' });
-    }
-});
-```
+   ```javascript
+   app.post('/ask', async (req, res) => {
+       const { question, pdfText } = req.body;
+       try {
+           const stream = await openai.chat.completions.create({
+               model: "gpt-4o-mini",
+               messages: [{ role: "user", content: `${pdfText}\n\nQ: ${question}\nA:` }],
+               store: true,
+               stream: true,
+           });
+   
+           let answer = '';
+           for await (const chunk of stream) {
+               answer += chunk.choices[0]?.delta?.content || "";
+           }
+   
+           res.json({ answer });
+       } catch (error) {
+           console.error('Error with OpenAI API:', error);
+           res.status(500).json({ error: 'Failed to get response from OpenAI' });
+       }
+   });
+   ```
 
 ### 6. Putting It All Together
 
