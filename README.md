@@ -290,9 +290,9 @@ Navigate to `backend/server.js`.
 
 2. Define the `/ask` endpoint to handle user questions based on the text extracted from a PDF. This endpoint accepts a POST request containing a JSON payload with two fields: question, representing the user’s query, and pdfText, which is the text extracted from the uploaded PDF file.
 
-Inside the function, the OpenAI API is invoked with a request to the GPT-4 model. The `messages` parameter passed to the API is an array where the user's query and the PDF text are formatted together. The prompt combines the extracted text (`pdfText`) and appends the user’s `question` (Q: ...), followed by an answer placeholder (A:). This setup allows the model to generate a response as if it were answering the question based on the given context.
+   Inside the function, the OpenAI API is invoked with a request to the GPT-4 model. The `messages` parameter passed to the API is an array where the user's query and the PDF text are formatted together. The prompt combines the extracted text (`pdfText`) and appends the user’s `question` (Q: ...), followed by an answer placeholder (A:). This setup allows the model to generate a response as if it were answering the question based on the given context.
 
-The stream mode is enabled in the API call, which means the response is returned in small chunks as it is generated. This is particularly useful for handling longer or more complex answers without waiting for the entire response to be generated. Within the `for await` loop, each incoming chunk is processed, and its content (if present) is appended to the `answer` variable. Finally, the assembled answer is sent back to the client as a JSON object with the `answer` field.
+   The stream mode is enabled in the API call, which means the response is returned in small chunks as it is generated. This is particularly useful for handling longer or more complex answers without waiting for the entire response to be generated. Within the `for await` loop, each incoming chunk is processed, and its content (if present) is appended to the `answer` variable. Finally, the assembled answer is sent back to the client as a JSON object with the `answer` field.
 
 ```javascript
 app.post('/ask', async (req, res) => {
