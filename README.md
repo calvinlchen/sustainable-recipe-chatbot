@@ -271,65 +271,65 @@ Open `frontend/src/App.js`. This is the file that runs the main React component 
    ```
    
 6. To make everything look nice, include the following styles in `frontend/src/App.css`. CSS (Cascading Style Sheets) is used to define the look and feel of a web application, such as colors, layouts, fonts, spacing, and responsiveness. Don't worry about the details for now! You can read more about CSS [here](https://www.w3schools.com/css/).
-  ```css
-   body {
-     font-family: Arial, sans-serif;
-     background-color: #f4f4f9;
-     margin: 0;
-     padding: 20px;
-   }
-   
-   .App {
-     max-width: 600px;
-     margin: 0 auto;
-     background: white;
-     padding: 20px;
-     border-radius: 8px;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   }
-   
-   h1 {
-     color: #333;
-     text-align: center;
-   }
-   
-   input[type="file"],
-   input[type="text"] {
-     width: 100%;
-     padding: 10px;
-     margin: 10px 0;
-     border: 1px solid #ccc;
-     border-radius: 4px;
-   }
-   
-   button {
-     width: 100%;
-     padding: 10px;
-     background-color: #007bff;
-     color: white;
-     border: none;
-     border-radius: 4px;
-     cursor: pointer;
-     margin-top: 10px;
-   }
-   
-   button:hover {
-     background-color: #0056b3;
-   }
-   
-   pre {
-     background-color: #f8f8f8;
-     padding: 10px;
-     border-radius: 4px;
-     overflow-x: auto;
-   }
-   
-   strong {
-     display: block;
-     margin-top: 20px;
-     color: #333;
-   }
-```
+     ```css
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+      }
+      
+      .App {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      
+      input[type="file"],
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      
+      button:hover {
+        background-color: #0056b3;
+      }
+      
+      pre {
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+      
+      strong {
+        display: block;
+        margin-top: 20px;
+        color: #333;
+      }
+   ```
 
 ### 5. Defining API Endpoints
 The backend will consist of two main API endpoints:
@@ -410,19 +410,19 @@ Lastly, we need to call our backend API endpoints from the appropriate frontend 
    };
    ```
 3. Modify the `handleAskQuestion` function to make a `POST` request to the backend `/ask` endpoint. Make sure to pass in the `question` and `pdfText` variables as parameters into our `axios.post()` call.
-```javascript
-const handleAskQuestion = async () => {
-     try {
-         const response = await axios.post('http://localhost:5001/ask', {
-             question,
-             pdfText
-         });
-         setAnswer(response.data.answer);
-     } catch (error) {
-         console.error('Error asking question:', error);
-     }
-};
-```
+   ```javascript
+   const handleAskQuestion = async () => {
+        try {
+            const response = await axios.post('http://localhost:5001/ask', {
+                question,
+                pdfText
+            });
+            setAnswer(response.data.answer);
+        } catch (error) {
+            console.error('Error asking question:', error);
+        }
+   };
+   ```
 
 ### 7. Conclusion
 Congratulations! You've just completed building the PDF Question Helper app, integrating a React frontend, an Express backend, and OpenAI's API. This project has taken you through essential concepts and tools, including:
@@ -431,5 +431,7 @@ Congratulations! You've just completed building the PDF Question Helper app, int
 - Making HTTP requests from a React frontend to an Express backend using Axios.
 - Leveraging OpenAI’s API to process and respond to user questions.
 - Understanding and working with REST APIs and JSON data.
+
+If you missed anything, feel free to reference this reppository, where a working version of the project is implemented.
 
 Good luck, and happy hacking! 🚀
