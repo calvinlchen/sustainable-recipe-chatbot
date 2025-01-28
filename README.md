@@ -268,29 +268,32 @@ Open `frontend/App.js`. This is the file that runs the main React component of y
    ```
 
 ### 5. Defining API Endpoints
+The backend will consist of two main API endpoints:
+- `/upload`: This endpoint processes the uploaded PDF file and extracts its text using pdf-parse.
+- `/ask`: This endpoint takes a question and the extracted text, sends it to OpenAI’s API, and returns the AI-generated answer.
 
+Navigate to `backend/server.js`. 
 
-## 💡 How It Works
+1. Define an endpoint at `/upload` that allows the frontend to upload a PDF file. This code extracts the text from the PDF file in the request payload (`req.file.buffer`) using `pdfParse` and uses `res.json()` to send the result as a JSON response back to the client. We use a `try`-`except` block to handle errors with the API call. 
+   ```javascript
+   // Endpoint to handle PDF upload and extract text
+   app.post('/upload', upload.single('file'), async (req, res) => {
+       try {
+           const data = await pdfParse(req.file.buffer); // Extract text from the uploaded PDF
+           res.json({ text: data.text }); // Return the extracted text
+       } catch (error) {
+           console.error('Error parsing PDF:', error); // Log a debug message on error
+           res.status(500).json({ error: 'Failed to parse PDF' });
+       }
+   });
+   ```
 
-### 1. Upload PDF
-When a user uploads a PDF file, the backend processes it with `pdf-parse` to extract the text content.
+2. Define the `/ask` endpoint to handle user questions based on the text extracted from a PDF. This endpoint accepts a POST request containing a JSON payload with two fields: question, representing the user’s query, and pdfText, which is the text extracted from the uploaded PDF file.
 
-**Backend Code**:
-```javascript
-app.post('/upload', upload.single('file'), async (req, res) => {
-    try {
-        const data = await pdfParse(req.file.buffer);
-        res.json({ text: data.text });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to parse PDF' });
-    }
-});
-```
+Inside the function, the OpenAI API is invoked with a request to the GPT-4 model. The `messages` parameter passed to the API is an array where the user's query and the PDF text are formatted together. The prompt combines the extracted text (`pdfText`) and appends the user’s `question` (Q: ...), followed by an answer placeholder (A:). This setup allows the model to generate a response as if it were answering the question based on the given context.
 
-### 2. Ask a Question
-The user asks a question about the PDF's content, which is sent to the OpenAI API to generate a response.
+The stream mode is enabled in the API call, which means the response is returned in small chunks as it is generated. This is particularly useful for handling longer or more complex answers without waiting for the entire response to be generated. Within the `for await` loop, each incoming chunk is processed, and its content (if present) is appended to the `answer` variable. Finally, the assembled answer is sent back to the client as a JSON object with the `answer` field.
 
-**Backend Code**:
 ```javascript
 app.post('/ask', async (req, res) => {
     const { question, pdfText } = req.body;
@@ -309,9 +312,11 @@ app.post('/ask', async (req, res) => {
 
         res.json({ answer });
     } catch (error) {
+        console.error('Error with OpenAI API:', error);
         res.status(500).json({ error: 'Failed to get response from OpenAI' });
     }
 });
 ```
 
-Enjoy building your project! 😊
+### 6. Putting It All Together
+
