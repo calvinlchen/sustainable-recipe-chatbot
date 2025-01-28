@@ -137,7 +137,7 @@ The backend contains the server-side code, built with Express. It handles our AP
    ```
 3. Install dependencies:
    ```bash
-   npm install express multer pdf-parse openai
+   npm install express multer pdf-parse openai cors
    ```
 4. Create a file `index.js` and add the following code. 
 
