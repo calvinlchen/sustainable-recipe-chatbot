@@ -8,7 +8,9 @@ const cors = require('cors');
 
 const app = express();
 const upload = multer();
-const openai = new OpenAI();
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY, // Get your API key from OpenAI dashboard
+});
 
 app.use(cors());
 app.use(express.json());
