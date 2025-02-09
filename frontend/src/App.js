@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";         
 import UserPref from "./pages/UserPref";
+import Recipes from "./pages/Recipes";
 
 export default function App() {
   return (
@@ -13,10 +14,12 @@ export default function App() {
           <li><Link to="/userpreferences">User Preferences</Link></li>
         </ul>
       </nav>
+
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/userpreferences" element={<UserPref />} />
+          <Route path="/recipes" element={<Recipes />} /> {/* ✅ Added Recipes route */}
         </Routes>
       </div>
     </Router>
