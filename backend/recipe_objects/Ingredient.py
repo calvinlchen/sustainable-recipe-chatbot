@@ -7,9 +7,9 @@ class Ingredient:
     # price is the price of the ingredient
     # unit is the measuring unit of the ingredient (lb, oz, cups, tablespoon, etc.)
     def __init__(self, name, price, unit):
-        self.name
-        self.price
-        self.unit
+        self.name = name
+        self.price = price
+        self.unit = unit
 
     def get_cost(self, quantity):
         return round(self.price * quantity, 2)
