@@ -12,6 +12,7 @@ export default function App() {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/userpreferences">User Preferences</Link></li>
+          <li><Link to="/recipes">My Recipes</Link></li>
         </ul>
       </nav>
 
@@ -19,7 +20,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/userpreferences" element={<UserPref />} />
-          <Route path="/recipes" element={<Recipes />} /> {/* ✅ Added Recipes route */}
+          <Route path="/recipes" element={<Recipes />} />
         </Routes>
       </div>
     </Router>

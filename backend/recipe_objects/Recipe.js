@@ -39,11 +39,11 @@ class Recipe {
    * @returns {Object}
    */
   toDict() {
-    // The ingredient_dictionary is already in a JSON-friendly format.
+    // The ingredientDictionary is already in a JSON-friendly format.
     return {
       name: this.name,
       steps: this.steps,
-      ingredient_dictionary: this.ingredientDictionary
+      ingredientDictionary: this.ingredientDictionary
     };
   }
 
@@ -53,9 +53,9 @@ class Recipe {
    * @returns {Recipe}
    */
   static fromDict(data) {
-    // data.ingredient_dictionary is assumed to be an object mapping ingredient names
+    // data.ingredientDictionary is assumed to be an object mapping ingredient names
     // to { quantity, price, unit }.
-    return new Recipe(data.name, data.steps, data.ingredient_dictionary);
+    return new Recipe(data.name, data.steps, data.ingredientDictionary);
   }
 }
 

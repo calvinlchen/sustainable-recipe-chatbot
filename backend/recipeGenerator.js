@@ -27,7 +27,7 @@ async function generateRecipe(dietChoice, budget, dietRestrictions, dietGoal) {
         {
           "name": "Recipe Name",
           "steps": ["Step 1", "Step 2", "..."],
-          "ingredient_dictionary": {
+          "ingredientDictionary": {
              "Ingredient Name": {"quantity": 0, "price": 0.0, "unit": "unit of measurement"}
              // Repeat for each ingredient in the recipe
           }
@@ -41,7 +41,7 @@ async function generateRecipe(dietChoice, budget, dietRestrictions, dietGoal) {
 
     try {
         const response = await openai.chat.completions.create({
-            model: "gpt-4o",
+            model: "gpt-4-turbo",
             messages: [{ role: "user", content: prompt }],
             max_tokens: 4096,
         });
