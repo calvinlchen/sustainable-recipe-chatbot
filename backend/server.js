@@ -6,8 +6,6 @@ const pdfParse = require('pdf-parse');
 const OpenAI = require('openai');
 const cors = require('cors');
 
-const pool = require('./db/database'); // Import DB connection
-
 const app = express();
 const upload = multer();
 const port = process.env.PORT || 5000;
@@ -17,26 +15,6 @@ const openai = new OpenAI({
 
 app.use(cors());
 app.use(express.json());
-
-// Test route
-app.get('/api/test', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT NOW()');
-        res.json({ message: 'Database connected', time: result.rows[0] });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-// Example route: Get all recipes from table
-app.get('/api/recipes', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM recipes');
-        res.json(result.rows);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
 
 app.post('/upload', upload.single('file'), async (req, res) => {
     try {
