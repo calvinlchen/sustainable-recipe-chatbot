@@ -1,13 +1,115 @@
+/* 🌿 General Styling */
 body {
+  font-family: "Arial", sans-serif;
+  background-color: #eef5db; /* Soft, earthy green */
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  color: #3a5a40; /* Deep green text */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 🌿 Navbar Styling */
+.navbar {
+  background-color: #588157; /* Forest green */
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 15px;
+}
+
+.navbar a:hover {
+  background: #3a5a40; /* Darker green */
+  border-radius: 5px;
+  transform: scale(1.05);
+}
+
+/* 🍃 Center the page content */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fefae0; /* Soft beige */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(60, 90, 40, 0.2);
+}
+
+/* 🍂 Page Styling */
+.page {
+  text-align: center;
+}
+
+h1 {
+  color: #3a5a40; /* Deep green */
+}
+
+/* 🌱 Form Styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.form input {
+  padding: 10px;
+  border: 1px solid #a3b18a; /* Sage green border */
+  border-radius: 5px;
+  background: #fefae0; /* Light beige */
+}
+
+.form button {
+  background: #588157; /* Forest green */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.form button:hover {
+  background: #3a5a40; /* Darker green */
+  transform: scale(1.05);
+}
+
+/* 🍀 Add a natural gradient to the background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #eef5db, #fefae0);
+  z-index: -1;
+}
+
+/* 🌍 Footer Styling */
+.footer {
+  text-align: center;
+  padding: 10px;
+  background: #588157; /* Forest green */
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
