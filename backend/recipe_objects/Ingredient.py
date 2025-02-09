@@ -1,7 +1,18 @@
 class Ingredient:
 
-    VALID_UNITS = {"teaspoon", "tablespoon", "fluid ounce", "cup", "pint", "quart",
-                   "gallon", "gram", "ounce", "pound", "piece", "slice"}
+    VALID_UNITS = {
+        # Volume (US Customary)
+        "teaspoon", "tablespoon", "fluid ounce", "cup", "pint", "quart", "gallon",
+
+        # Volume (Metric)
+        "milliliter", "liter",
+
+        # Weight (US & Metric)
+        "milligram", "gram", "kilogram", "ounce", "pound", "ton",
+
+        # Miscellaneous units
+        "piece", "slice", "pinch"
+    }
 
     # name is the name of the ingredient
     # price is the price of the ingredient
