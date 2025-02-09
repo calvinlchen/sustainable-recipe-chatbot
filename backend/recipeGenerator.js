@@ -80,15 +80,15 @@ async function generateRecipe(dietChoice, budget, dietRestrictions, dietGoal) {
 
         // If valid recipe data is available, convert it into Recipe objects and save it.
         if (recipeData && recipeData.recipes && recipeData.recipes.length > 0) {
-            // For example, we add the first recipe in the array.
-            const recipeObj = Recipe.fromDict(recipeData.recipes[0]);
-
             // Instantiate a UserRecipeManager (or use a singleton instance if desired)
             const userRecipeManager = new UserRecipeManager();
 
-            // Save the recipe to the manager
-            userRecipeManager.addRecipeToList(recipeObj);
-            console.log("Recipe added to UserRecipeManager.");
+            // Loop through all recipes in the array and add them.
+            recipeData.recipes.forEach(recipeDict => {
+                const recipeObj = Recipe.fromDict(recipeDict);
+                userRecipeManager.addRecipeToList(recipeObj);
+            });
+            console.log("All recipes added to UserRecipeManager.");
         } else {
             console.error("No recipes found in parsed JSON data.");
         }
