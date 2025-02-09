@@ -44,17 +44,17 @@ class Ingredient:
         return self.price
     
     def set_price(self, price):
-        if (isinstance(price, (int, float)) and price >= 0):
+        if isinstance(price, (int, float)) and price >= 0:
             self.price = price
         else:
             raise ValueError("Price must be a non-negative number.")
         
     def get_unit(self):
-        return self._unit
+        return self.unit
     
     def set_unit(self, unit):
         if unit in self.VALID_UNITS:
-            self._unit = unit
+            self.unit = unit
         else:
             raise ValueError(f"Invalid unit. Choose from: {', '.join(self.VALID_UNITS)}")
     
