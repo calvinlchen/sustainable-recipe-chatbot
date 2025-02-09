@@ -4,20 +4,48 @@ export default function UserPref() {
 const [dietChoice, setDietChoice] = useState("");
   const [budget, setBudget] = useState("");
   const [dietRestrictions, setDietRestrictions] = useState([]);
+  const [dietGoal, setDietGoal] = useState("");
+  const [responseMessage, setResponseMessage] = useState("");
 
   const handleRestrictionChange = (e) => {
     const value = Array.from(e.target.selectedOptions, option => option.value);
     setDietRestrictions(value);
   };
 
-const [dietGoal, setDietGoal] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    const userPreferences = {
+      dietChoice,
+      budget,
+      dietRestrictions,
+      dietGoal,
+    };
+
+    try {
+      const response = await fetch("http://localhost:5001/api/generate-recipe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userPreferences),
+      });
+
+      const data = await response.json();
+      console.log("Response from backend:", data);
+      setResponseMessage(`Response: ${data.message}`); // Show response message on screen
+    } catch (error) {
+      console.error("Error submitting preferences:", error);
+      setResponseMessage("Error: Unable to connect to backend.");
+    }
+  };
 
 return (
     <div className="page">
       <h1>⚙️ User Preferences</h1>
       <p>Fill out the form below to set your preferences.</p>
 
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
 
       <label>Budget:</label> 
       <select value={budget} onChange={(e) => setBudget(e.target.value)}> 
@@ -64,6 +92,7 @@ return (
 
         <button type="submit">Submit</button>
       </form>
+      {responseMessage && <p>{responseMessage}</p>}
     </div>
 );
 }
