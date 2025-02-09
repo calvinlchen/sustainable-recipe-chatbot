@@ -1,23 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-function Home() {
-  return (
-    <div className="page">
-      <h1>🏠 Welcome to the Home Page</h1>
-      <p>This is where users can explore features of our app.</p>
-    </div>
-  );
-}
-
-function UserPref() {
-  return (
-    <div className="page">
-      <h1>⚙️ User Preferences</h1>
-      <p>Fill out the form below to set your preferences.</p>
-    </div>
-  );
-}
+import Home from "./pages/Home";         
+import UserPref from "./pages/UserPref";
 
 export default function App() {
   return (
