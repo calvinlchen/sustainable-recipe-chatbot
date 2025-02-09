@@ -8,7 +8,7 @@ const Ingredient = require('./Ingredient');
 class UserRecipeManager {
   constructor() {
     // Define the data file location; adjust the path if needed.
-    this.dataFile = path.join(__dirname, '..', 'data', 'recipes.json');
+    this.dataFile = path.join(__dirname, '..', '..', 'data', 'recipes.json');
     this.recipeList = [];
     this.ingredientList = [];
     this.loadData();

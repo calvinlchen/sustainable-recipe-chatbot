@@ -1,9 +1,5 @@
 // Ingredient.js
 
-// Define a set of valid units.
-// You can adjust this array as needed.
-const VALID_UNITS = ["lb", "oz", "cups", "tablespoon", "teaspoon"];
-
 class Ingredient {
   /**
    * @param {string} name - The name of the ingredient.
@@ -92,15 +88,8 @@ class Ingredient {
   }
 
   setUnit(unit) {
-    if (VALID_UNITS.includes(unit)) {
-      this.unit = unit;
-    } else {
-      throw new Error(`Invalid unit. Choose from: ${VALID_UNITS.join(", ")}`);
-    }
+    this.unit = unit;
   }
 }
-
-// Export the VALID_UNITS as a property if needed elsewhere.
-Ingredient.VALID_UNITS = VALID_UNITS;
 
 module.exports = Ingredient;

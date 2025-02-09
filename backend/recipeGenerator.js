@@ -49,18 +49,30 @@ async function generateRecipe(dietChoice, budget, dietRestrictions, dietGoal) {
         const fullResponse = response.choices?.[0]?.message?.content?.trim();
         console.log("Full Response:\n", fullResponse);
 
-        // Extract JSON from the response.
-        // Here we assume that the JSON block starts at the first occurrence of '{'
-        const jsonStartIndex = fullResponse.indexOf('{');
-        let recipeData = null;
+        let jsonString = null;
 
-        if (jsonStartIndex !== -1) {
-            const jsonString = fullResponse.slice(jsonStartIndex);
+        // Try to extract the JSON block using a regex for markdown code fences
+        const jsonRegex = /```json\s*([\s\S]*?)\s*```/;
+        const match = fullResponse.match(jsonRegex);
+        if (match && match[1]) {
+            jsonString = match[1];
+        } else {
+            // Fallback: Try to extract from the first "{" to the last "}"
+            const startIndex = fullResponse.indexOf('{');
+            const lastIndex = fullResponse.lastIndexOf('}');
+            if (startIndex !== -1 && lastIndex !== -1 && lastIndex > startIndex) {
+                jsonString = fullResponse.substring(startIndex, lastIndex + 1);
+            }
+        }
+
+        // Extract JSON from the response.
+        let recipeData = null;
+        if (jsonString) {
             try {
                 recipeData = JSON.parse(jsonString);
                 console.log("Parsed JSON Data:", recipeData);
             } catch (jsonError) {
-                console.error("Error parsing JSON:", jsonError);
+                console.error("Error parsing extracted JSON:", jsonError);
             }
         } else {
             console.error("No JSON block found in the response.");
