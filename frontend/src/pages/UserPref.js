@@ -1,10 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function UserPref() {
-  return (
+const [dietChoice, setDietChoice] = useState("");
+  const [budget, setBudget] = useState("");
+  const [dietRestrictions, setDietRestrictions] = useState([]);
+
+  const handleRestrictionChange = (e) => {
+    const value = Array.from(e.target.selectedOptions, option => option.value);
+    setDietRestrictions(value);
+  };
+
+const [dietGoal, setDietGoal] = useState("");
+
+return (
     <div className="page">
       <h1>⚙️ User Preferences</h1>
       <p>Fill out the form below to set your preferences.</p>
+
+      <form className="form">
+
+      <label>Budget:</label> 
+      <select value={budget} onChange={(e) => setBudget(e.target.value)}> 
+        <option value="">None</option> 
+        <option value="low">Low</option> 
+        <option value="medium">Medium</option> 
+        <option value="high">High</option>
+      </select>
+
+      <label>Dietary Goal:</label> 
+      <select value={dietGoal} onChange={(e) => setDietGoal(e.target.value)}> 
+        <option value="">None</option> 
+        <option value="Maintain Weight">Maintain Weight</option> 
+        <option value="Gain Weight">Gain Weight</option> 
+        <option value="Lose Weight">Lose Weight</option>
+      </select>
+
+        {/* Lifestyle Diet Choice (Single Select) */}
+        <label>Dietary Choice:</label>
+        <select value={dietChoice} onChange={(e) => setDietChoice(e.target.value)}>
+          <option value="">None</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="pescatarian">Pescatarian</option>
+          <option value="keto">Keto</option>
+          <option value="paleo">Paleo</option>
+        </select>
+
+        {/*Dietary Restrictions (Multi-Select) */}
+        <label>Dietary Restrictions (Select multiple):</label>
+        <select multiple value={dietRestrictions} onChange={handleRestrictionChange}>
+          <option value="gluten-free">Gluten-Free</option>
+          <option value="lactose-free">Lactose-Free</option>
+          <option value="nut-free">Nut-Free</option>
+          <option value="halal">Halal</option>
+          <option value="kosher">Kosher</option>
+        </select>
+
+        {/*Display Selected Choices */}
+         <p><strong>Selected Budget:</strong> {budget || "None"}</p>
+        <p><strong>Selected Goal:</strong> {dietGoal || "None"}</p>
+        <p><strong>Selected Diet:</strong> {dietChoice || "None"}</p>
+        <p><strong>Selected Restrictions:</strong> {dietRestrictions.length ? dietRestrictions.join(", ") : "None"}</p>
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
-  );
+);
 }
