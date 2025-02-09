@@ -1,6 +1,5 @@
 from backend.Unit import Unit
 
-
 class Ingredient:
 
     # name is the name of the ingredient
@@ -13,6 +12,19 @@ class Ingredient:
 
     def report_with_quantity(self, quantity):
         return f"{quantity} {self.unit} of {self.name}"
+
+    def to_dict(self):
+        """Convert Ingredient object to a dictionary for JSON serialization."""
+        return {
+            "name": self.name,
+            "price": self.price,
+            "unit": self.unit
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        """Create an Ingredient object from a dictionary."""
+        return cls(data["name"], data["price"], data["unit"])
 
     def get_cost(self, quantity):
         return round(self.price * quantity, 2)
