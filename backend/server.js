@@ -40,7 +40,7 @@ app.post('/api/generate-recipe', async (req, res) => {
         const response = await openai.chat.completions.create({
             model: "gpt-4-turbo",  
             messages: [{ role: "user", content: prompt }],
-            max_tokens: 150,
+            max_tokens: 4096,
         });
 
         console.log("OpenAI Response:", JSON.stringify(response, null, 2)); // Debug API response
