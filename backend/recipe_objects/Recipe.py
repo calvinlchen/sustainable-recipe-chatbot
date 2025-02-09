@@ -5,5 +5,5 @@ class Recipe:
       self.ingredientMap = ingredient_map
 
   def get_ingredients_with_quantity(self):
-    return [f"{quantity} of {ingredient}"
+    return [ingredient.report_with_quantity(quantity)
             for ingredient, quantity in self.ingredientMap.items()]

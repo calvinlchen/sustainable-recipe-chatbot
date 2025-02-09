@@ -11,6 +11,9 @@ class Ingredient:
         self.price = price
         self.unit = unit
 
+    def report_with_quantity(self, quantity):
+        return f"{quantity} {self.unit} of {self.name}"
+
     def get_cost(self, quantity):
         return round(self.price * quantity, 2)
     
