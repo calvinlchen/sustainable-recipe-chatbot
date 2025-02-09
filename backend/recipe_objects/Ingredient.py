@@ -1,18 +1,7 @@
+from backend.Unit import Unit
+
+
 class Ingredient:
-
-    VALID_UNITS = {
-        # Volume (US Customary)
-        "teaspoon", "tablespoon", "fluid ounce", "cup", "pint", "quart", "gallon",
-
-        # Volume (Metric)
-        "milliliter", "liter",
-
-        # Weight (US & Metric)
-        "milligram", "gram", "kilogram", "ounce", "pound", "ton",
-
-        # Miscellaneous units
-        "piece", "slice", "pinch"
-    }
 
     # name is the name of the ingredient
     # price is the price of the ingredient
@@ -36,7 +25,7 @@ class Ingredient:
     
     def set_name(self, name):
         if isinstance(name, str) and name.strip():
-            self._name = name
+            self.name = name
         else:
             raise ValueError("Invalid ingredient name.")
     
@@ -53,10 +42,10 @@ class Ingredient:
         return self.unit
     
     def set_unit(self, unit):
-        if unit in self.VALID_UNITS:
+        if unit in Unit.VALID_UNITS:
             self.unit = unit
         else:
-            raise ValueError(f"Invalid unit. Choose from: {', '.join(self.VALID_UNITS)}")
+            raise ValueError(f"Invalid unit. Choose from: {', '.join(Unit.VALID_UNITS)}")
     
 
     
