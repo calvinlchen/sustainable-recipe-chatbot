@@ -1,6 +1,6 @@
 # 🌱 Sustainable Recipe Generator  
 
-This project was made by **Calvin Chen, Roger Chen, Johann Nino de Espino, and Reyan Shariff** for **HackDuke 2025**.  
+This project was made by **Calvin Chen, Roger Chen, Johan Nino de Espino, and Reyan Shariff** for **HackDuke 2025**.  
 
 It was originally forked from the **PDF RAG web app** starter code provided by HackDuke staff. Special acknowledgements to HackDuke for running the hackathon and providing starter code.
 
